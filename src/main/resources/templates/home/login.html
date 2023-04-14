@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>KCoffee</title>
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <link rel="stylesheet" th:href="@{../../lib/font/icon/iconfont.css}">
+    <link rel="stylesheet" th:href="@{../../lib/font/css/font-awesome.min.css}"/>
+    <link rel="stylesheet" th:href="@{../../css/reset.css}"/>
+</head>
+<body>
+<div id="app">
+
+    <!-- header -->
+    <el-menu :default-active="1" mode="horizontal">
+        <el-menu-item index="1"><a href="/">首页</a></el-menu-item>
+        <el-submenu index="2">
+            <template slot="title">店铺</template>
+            <el-menu-item index="2-1"><a href="/store/1">店铺1</a></el-menu-item>
+            <el-menu-item index="2-2"><a href="/store/2">店铺2</a></el-menu-item>
+            <el-menu-item index="2-3"><a href="/store/3">店铺3</a></el-menu-item>
+        </el-submenu>
+        <el-menu-item index="4"><a href="/user">个人信息</a></el-menu-item>
+    </el-menu>
+
+    <el-main id="main">
+        <el-row type="flex" class="row-bg" justify="center">
+            <el-col :xs="8" :sm="9" :md="8" :lg="6" :xl="5">
+                <el-card class="box-card">
+                    <div solt="header" class="header">
+                        <span class="item">会员登录</span>
+                    </div>
+                    <div id="form">
+                        <!-- 登录表单 -->
+                        <el-form :model="login" status-icon ref="login">
+                            <el-form-item prop="firstName"
+                                            :rules="[{ required: true, message: '姓名不能为空'}]">
+                                <el-input v-model="login.firstName" placeholder="firstName"
+                                            auto-complete="off"></el-input>
+                            </el-form-item>
+                            <el-form-item prop="email"
+                                            :rules="[{ required: true, message: '邮箱不能为空'}]">
+                                <el-input type="email" placeholder="email"
+                                            v-model="login.email" @keyup.enter.native="loginEnter('login')"
+                                            auto-complete="off"></el-input>
+                            </el-form-item>
+                            <el-form-item>
+                                <el-button class="btn" type="primary" @click="submitForm('login')">登录
+                                </el-button>
+                            </el-form-item>
+                        </el-form>
+                    </div>
+                </el-card>
+            </el-col>
+        </el-row>
+    </el-main>
+</div>
+</body>
+<script type="text/javascript" th:src="@{../../lib/vue/vue.js}"></script>
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+<script type="text/javascript" th:src="@{../../lib/vue/vue-resource.js}"></script>
+<script type="text/javascript" th:src="@{../../js/login.js}"></script>
+</html>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.coffee.mapper.UserMapper">
+
+    <!-- 获取全部用户 -->
+    <select id="findAll" resultType="com.coffee.entity.User">
+        select * from user;
+    </select>
+
+    <!-- 根据ID查询 -->
+    <select id="findById" resultType="com.coffee.entity.User" parameterType="Long">
+        select * from user where id = #{id,jdbcType=BIGINT}
+    </select>
+
+    <!-- 创建 -->
+    <insert id="create" parameterType="com.coffee.entity.User">
+        insert into user (`first_name`, `sur_name`,
+        `phone`, `email`, `date_joined`,
+        `spend_to_date`, `account_balance`, `address`,
+        `user_type`, `latitude`, `longitude`,
+        `easting`, `northing`)
+        values ( #{firstName,jdbcType=VARCHAR}, #{surName,jdbcType=VARCHAR},
+        #{phone,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{dateJoined,jdbcType=DATE},
+        #{spendToDate,jdbcType=DECIMAL}, #{accountBalance,jdbcType=DECIMAL}, #{address,jdbcType=VARCHAR},
+        #{userType,jdbcType=TINYINT}, #{latitude,jdbcType=DECIMAL}, #{longitude,jdbcType=DECIMAL},
+        #{easting,jdbcType=INTEGER}, #{northing,jdbcType=INTEGER})
+    </insert>
+
+    <!-- 删除 -->
+    <delete id="delete" parameterType="Long">
+        delete from user
+        where `id` = #{id,jdbcType=BIGINT}
+    </delete>
+
+    <!-- 更新 -->
+    <update id="update" parameterType="com.coffee.entity.User">
+        update user
+        set `first_name` = #{firstName,jdbcType=VARCHAR},
+        `sur_name` = #{surName,jdbcType=VARCHAR},
+        `phone` = #{phone,jdbcType=VARCHAR},
+        `email` = #{email,jdbcType=VARCHAR},
+        `date_joined` = #{dateJoined,jdbcType=DATE},
+        `spend_to_date` = #{spendToDate,jdbcType=DECIMAL},
+        `account_balance` = #{accountBalance,jdbcType=DECIMAL},
+        `address` = #{address,jdbcType=VARCHAR},
+        `user_type` = #{userType,jdbcType=TINYINT},
+        `latitude` = #{latitude,jdbcType=DECIMAL},
+        `longitude` = #{longitude,jdbcType=DECIMAL},
+        `easting` = #{easting,jdbcType=INTEGER},
+        `northing` = #{northing,jdbcType=INTEGER}
+        where `id` = #{id,jdbcType=BIGINT}
+    </update>
+
+    <!-- 根据用户名查询 -->
+    <select id="findByName" parameterType="String" resultType="com.coffee.entity.User">
+        select * from user where first_name = #{firstName,jdbcType=VARCHAR}
+    </select>
+</mapper>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>KCoffee</title>
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <link rel="stylesheet" th:href="@{../../lib/font/css/font-awesome.min.css}"/>
+    <link rel="stylesheet" th:href="@{../../css/reset.css}"/>
+</head>
+<body>
+
+<div id="app">
+    <!-- header -->
+    <el-menu :default-active="1" mode="horizontal">
+        <el-menu-item index="1"><a href="/">首页</a></el-menu-item>
+        <el-submenu index="2">
+            <template slot="title">店铺</template>
+            <el-menu-item index="2-1"><a href="/store/1">店铺1</a></el-menu-item>
+            <el-menu-item index="2-2"><a href="/store/2">店铺2</a></el-menu-item>
+            <el-menu-item index="2-3"><a href="/store/3">店铺3</a></el-menu-item>
+        </el-submenu>
+        <el-menu-item index="4"><a href="/user">个人信息</a></el-menu-item>
+    </el-menu>
+
+    <!-- main -->
+    <div id="main">
+        <div>
+            店铺相关信息的展示
+        </div>
+    </div>
+</div>
+
+</body>
+<script type="text/javascript" th:src="@{../../lib/vue/vue.js}"></script>
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+<script type="text/javascript" th:src="@{../../lib/vue/vue-resource.js}"></script>
+<script type="text/javascript" th:src="@{../../js/index.js}"></script>
+</html>

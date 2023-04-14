@@ -1,0 +1,32 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    name: springboot
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/my_test?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true
+    username: root
+    password:
+
+  #文件上传相关设置
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 100MB
+
+  #devtools插件
+  devtools:
+    livereload:
+      enabled: true #是否支持livereload
+      port: 35729
+    restart:
+      enabled: true #是否支持热部署
+
+  #spring-aop配置
+  aop:
+    #启用@Aspectj注解驱动的切面，允许Spring创建基于类的代理
+    auto: true
+    proxy-target-class: true
+
+
